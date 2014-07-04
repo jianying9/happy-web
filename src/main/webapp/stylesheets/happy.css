@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+html, body, div, input, textarea, img {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+    display: block;
+}
+
+body {
+    font: 14px/1.5 "Arial","Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeiti","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    position: relative;
+    min-width: 1000px;
+    background-color: #f6f7f7;
+    color: #333;
+}
+
+.center {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    background: #1f90de;
+    color: white;
+    height: 45px;
+    overflow: hidden;
+}
+
+.header > .header_title, .header > .header_navi {
+    float: left;
+}
+
+.header_title {
+    
+}
+
+.header_navi {
+    
+}
