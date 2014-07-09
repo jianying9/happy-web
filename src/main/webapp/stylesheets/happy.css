@@ -13,31 +13,86 @@ img {
 body {
     font: 14px/1.5 "Arial","Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeiti","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
     position: relative;
-    min-width: 1000px;
+    min-width: 1040px;
     background-color: #f6f7f7;
     color: #333;
 }
 
-.center {
-    width: 1000px;
-    margin: 0 auto;
-}
-
-.header {
+.header_wrap {
     background: #1f90de;
-    color: white;
     height: 45px;
     overflow: hidden;
 }
 
-.header > .header_title, .header > .header_navi {
+.header {
+    color: white;
+    width: 1040px;
+    margin: 0 auto;
+}
+
+.header > .header_title, .header > .header_content {
     float: left;
 }
 
 .header_title {
-    
+    font-size: 26px;
+    padding: 3px 10px;
 }
 
-.header_navi {
-    
+.header_content {
+    font-size: 17px;
+    padding: 10px 10px;
+}
+
+.content {
+    overflow: hidden;
+    width: 1040px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.content_main {
+    width: 725px;
+    float: left;
+    background-color: white;
+}
+
+.content_right {
+    width: 300px;
+    float: right;
+    background-color: white;
+}
+
+.image_list > .list_item {
+    border-bottom: 1px solid #efefef;
+    padding: 17px 0 0 0;
+}
+
+.image_title {
+    color: #777;
+    padding: 15px 20px 0 60px;
+    font-size: 20px;
+}
+
+.image_wrap {
+    margin: 15px auto 0;
+    width: 430px;
+}
+
+.image_tools {
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.image_tools > .image_tool_item {
+    float: right;
+    overflow: hidden;
+    padding: 2px 0;
+    margin-right: 26px;
+    color: #0a8cd2;
+}
+
+.image_tool_item > div {
+    float: left;
+    margin-left: 9px;
 }
