@@ -5,6 +5,14 @@ html, body, div, input, textarea, img {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0a8cd2;
+}
+
 img {
     border: none;
     display: block;
@@ -53,6 +61,7 @@ body {
 
 .content_main {
     width: 725px;
+    min-height: 800px;
     float: left;
     background-color: white;
 }
@@ -95,4 +104,27 @@ body {
 .image_tool_item > div {
     float: left;
     margin-left: 9px;
+}
+
+.more_button {
+    width: 85px;
+    margin: 10px auto 0;
+    border: 1px solid #d9d9d9;
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+.footer {
+    overflow: hidden;
+    width: 1040px;
+    margin: 20px auto 0;
+    position: relative;
+    background-color: white;
+}
+
+.footer_txt {
+    padding: 3px 20px;
+    font-size: 12px;
+    float: left;
 }
