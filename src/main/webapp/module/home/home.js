@@ -1,10 +1,5 @@
-define(function(require) {
+define('home', ['require', 'yy/yy', 'yy/button', 'yy/list'], function(require) {
     var _yy = require('yy/yy');
-    var _index = _yy.getIndex();
-    require('yy/panel');
-    require('yy/button');
-    require('yy/list');
-    var _module = require('yy/module');
     var self = {};
     var _event = _yy.getEvent();
     var _message = _yy.getMessage();
