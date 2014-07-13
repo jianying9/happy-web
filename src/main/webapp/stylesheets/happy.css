@@ -55,7 +55,7 @@ body {
 .content {
     overflow: hidden;
     width: 1040px;
-    margin: 0 auto;
+    margin: 20px auto 0;
     position: relative;
 }
 
@@ -69,7 +69,6 @@ body {
 .content_right {
     width: 300px;
     float: right;
-    background-color: white;
 }
 
 .image_list > .list_item {
@@ -108,11 +107,56 @@ body {
 
 .more_button {
     width: 85px;
-    margin: 10px auto 0;
+    margin: 10px auto;
     border: 1px solid #d9d9d9;
     background-color: #f2f2f2;
     border-radius: 3px;
     padding: 3px;
+}
+
+.box {
+    padding: 15px 20px;
+    background-color: white;
+    margin-bottom: 15px;
+}
+
+.login_btn {
+    display: block;
+    width: 140px;
+    border-radius: 5px;
+    border: 1px solid #efefef;
+    background: #f6f7f7;
+    padding: 10px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.weibo_login {
+    height: 20px;
+    background: #f6f7f7 url("./images/weibo.png") 15px 4px no-repeat;
+}
+
+.weibo_login:hover {
+    background: #ddd url("./images/weibo.png") -105px 4px no-repeat;
+}
+
+.unlogin_panel {
+    margin: 10px 0 0 0;
+    border-top: 2px solid #ddd;
+    padding: 5px;
+    color: #1f90de;
+}
+
+.android_qrcode {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    background: url("./images/androidqrcode.png") 0 0 no-repeat;
+}
+
+.android_title {
+    text-align: center;
+    color: #1f90de;
 }
 
 .footer {

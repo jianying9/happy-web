@@ -1,4 +1,4 @@
-define('home', ['require', 'yy/yy', 'yy/button', 'yy/list'], function(require) {
+define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(require) {
     var _yy = require('yy/yy');
     var self = {};
     var _event = _yy.getEvent();
@@ -29,6 +29,8 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list'], function(require) {
                 imageList.setPageSize(msg.data.pageSize);
                 if(msg.data.length === 0) {
                     moreButton.hide();
+                } else {
+                    moreButton.show();
                 }
             }
         });
@@ -40,6 +42,13 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list'], function(require) {
                 act: 'INQUIRE_IMAGE_PAGE',
                 pageIndex: pageIndex,
                 pageSize: pageSize
+            });
+        });
+        //初始化微博登陆按钮
+        var weiboLoginButton = thisModule.findByKey('weibo-login');
+        _event.bind(weiboLoginButton, 'click', function(thisCom) {
+            WB2.login(function() {
+                alert('111');
             });
         });
         //加载图片

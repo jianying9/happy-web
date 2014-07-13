@@ -12,8 +12,8 @@
     <body>
         <script>
             var staticRootPath = "http://www.bigcodebang.com/yy/libs/";
-//            var v = new Date().getTime();
-            var v = 2;
+            var v = new Date().getTime();
+//            var v = 2;
             require.config({
                 packages: [
                     {
@@ -35,7 +35,8 @@
                     'yy/label': staticRootPath + 'yy',
                     'yy/list': staticRootPath + 'yy',
                     'yy/list_item': staticRootPath + 'yy',
-                    'yy/panel': staticRootPath + 'yy'
+                    'yy/panel': staticRootPath + 'yy',
+                    'weibo': 'http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=238808965'
                 },
                 shim: {
                     'crypto': {
@@ -52,6 +53,9 @@
                             link.href = staticRootPath + 'jquery/datepicker/stylesheets/jquery-ui-1.10.3.datepicker.css';
                             document.getElementsByTagName("head")[0].appendChild(link);
                         }
+                    },
+                    'weibo': {
+                        exports: 'WB2'
                     }
                 },
                 urlArgs: 'v=' + v
