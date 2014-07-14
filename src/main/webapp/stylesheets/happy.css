@@ -131,13 +131,8 @@ body {
     text-align: center;
 }
 
-.weibo_login {
-    height: 20px;
-    background: #f6f7f7 url("./images/weibo.png") 15px 4px no-repeat;
-}
-
-.weibo_login:hover {
-    background: #ddd url("./images/weibo.png") -105px 4px no-repeat;
+#weibo-login img{
+    display: initial;
 }
 
 .unlogin_panel {

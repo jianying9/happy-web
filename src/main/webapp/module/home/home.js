@@ -12,22 +12,22 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
             itemClazz: '',
             itemDataToHtml: function(itemData) {
                 var result = '<div class="image_title">' + itemData.title + '</div>'
-                    + '<div class="image_wrap"><img alt="" src="' + itemData.mPicurl + '" /></div>'
-                    + '<div class="image_tools">'
-                    + '<div class="image_tool_item button"><div>踩</div><div class="label">(' + itemData.voteDown + ')</div></div>'
-                    + '<div class="image_tool_item button"><div>顶</div><div class="label">(' + itemData.voteUp + ')</div></div>'
-                    + '</div>';
+                        + '<div class="image_wrap"><img alt="" src="' + itemData.mPicurl + '" /></div>'
+                        + '<div class="image_tools">'
+                        + '<div class="image_tool_item button"><div>踩</div><div class="label">(' + itemData.voteDown + ')</div></div>'
+                        + '<div class="image_tool_item button"><div>顶</div><div class="label">(' + itemData.voteUp + ')</div></div>'
+                        + '</div>';
                 return result;
             },
             itemCompleted: function(itemCom) {
             }
         });
         _message.listen(imageList, 'INQUIRE_IMAGE_PAGE', function(thisCom, msg) {
-            if(msg.state === 'SUCCESS') {
+            if (msg.state === 'SUCCESS') {
                 imageList.loadData(msg.data.list);
                 imageList.setPageIndex(msg.data.pageIndex);
                 imageList.setPageSize(msg.data.pageSize);
-                if(msg.data.length === 0) {
+                if (msg.data.length === 0) {
                     moreButton.hide();
                 } else {
                     moreButton.show();
@@ -45,10 +45,24 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
             });
         });
         //初始化微博登陆按钮
-        var weiboLoginButton = thisModule.findByKey('weibo-login');
-        _event.bind(weiboLoginButton, 'click', function(thisCom) {
-            WB2.login(function() {
-                alert('111');
+//        var weiboLoginButton = thisModule.findByKey('weibo-login');
+//        _event.bind(weiboLoginButton, 'click', function(thisCom) {
+//            WB2.login(function() {
+//            });
+//        });
+        WB2.anyWhere(function(W) {
+            W.widget.connectButton({
+                id: "weibo-login",
+                type: '3,2',
+                callback: {
+                    login: function(o) {
+                        console.debug(o);
+                    },
+                    logout: function() {
+                    //退出后的回调函数
+                    
+                    }
+                }
             });
         });
         //加载图片
