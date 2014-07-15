@@ -149,9 +149,9 @@ body {
     background: url("./images/androidqrcode.png") 0 0 no-repeat;
 }
 
-.android_title {
-    text-align: center;
+.android_download {
     color: #1f90de;
+    margin-left: 40px;
 }
 
 .footer {

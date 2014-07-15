@@ -33,9 +33,9 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-<!--                    <warSourceExcludes>  
+                    <warSourceExcludes>  
                         **/*.js,**/*.css
-                    </warSourceExcludes>-->
+                    </warSourceExcludes>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
