@@ -22,7 +22,7 @@ body {
     font: 14px/1.5 "Arial","Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeiti","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
     position: relative;
     min-width: 1040px;
-    background-color: #f6f7f7;
+    background-color: #f0f0f0;
     color: #333;
 }
 
@@ -63,7 +63,6 @@ body {
     width: 725px;
     min-height: 800px;
     float: left;
-    background-color: white;
 }
 
 .content_right {
@@ -72,8 +71,9 @@ body {
 }
 
 .image_list > .list_item {
-    border-bottom: 1px solid #efefef;
-    padding: 17px 0 0 0;
+    background-color: white;
+    margin-bottom: 15px;
+    border-radius: 5px;
 }
 
 .image_title {
@@ -88,9 +88,8 @@ body {
 }
 
 .image_tools {
-    margin: 15px 0;
     overflow: hidden;
-    padding: 0 20px;
+    padding: 15px 20px;
 }
 
 .image_tools > div {
@@ -120,6 +119,7 @@ body {
 
 .box {
     padding: 15px 20px;
+    border-radius: 5px;
     background-color: white;
     margin-bottom: 15px;
 }
