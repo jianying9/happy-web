@@ -90,15 +90,18 @@ body {
 .image_tools {
     margin: 15px 0;
     overflow: hidden;
+    padding: 0 20px;
 }
 
-.image_tools > .image_tool_item {
+.image_tools > div {
     float: right;
     overflow: hidden;
-    padding: 2px 0;
-    margin-right: 26px;
+    margin-right: 10px;
     color: #0a8cd2;
-    cursor: pointer;
+}
+
+.image_tool_item_title {
+    padding: 5px 0;
 }
 
 .image_tool_item > div {
@@ -134,6 +137,12 @@ body {
 
 #weibo-login img{
     display: initial;
+}
+
+.sina_publish {
+    width: 32px;
+    height: 32px;
+    background: url("./images/share.png") 0 -104px no-repeat;
 }
 
 .unlogin_panel {
