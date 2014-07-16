@@ -14,12 +14,26 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                 var result = '<div class="image_title">' + itemData.title + '</div>'
                         + '<div class="image_wrap"><img alt="" src="' + itemData.mPicurl + '" /></div>'
                         + '<div class="image_tools">'
-                        + '<div class="image_tool_item button"><div>踩</div><div class="label">(' + itemData.voteDown + ')</div></div>'
-                        + '<div class="image_tool_item button"><div>顶</div><div class="label">(' + itemData.voteUp + ')</div></div>'
+//                        + '<div class="image_tool_item button"><div>踩</div><div class="label">(' + itemData.voteDown + ')</div></div>'
+//                        + '<div class="image_tool_item button"><div>顶</div><div class="label">(' + itemData.voteUp + ')</div></div>'
+                        + '<div class="image_tool_item"><div id="' + itemData.id + '-sina-publish" class="publishButton publishButton_red02"><span>发布到微博</span></div></div>'
                         + '</div>';
                 return result;
             },
             itemCompleted: function(itemCom) {
+                var data = itemCom.getData();
+                var publishId = data.id + '-sina-publish';
+                WB2.anyWhere(function(W) {
+                    W.widget.publish({
+                        id: publishId,
+                        default_text: '每天笑一笑，大脑清醒心脏好！http://www.bigcodebang.com',
+                        default_image: data.picurl,
+                        button_size: 'middle',
+                        button_type:'red',
+                        button_text:'发布到微博',
+                        toolbar: 'face,topic'
+                    });
+                });
             }
         });
         _message.listen(imageList, 'INQUIRE_IMAGE_PAGE', function(thisCom, msg) {
@@ -59,8 +73,6 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                         console.debug(o);
                     },
                     logout: function() {
-                    //退出后的回调函数
-                    
                     }
                 }
             });

@@ -98,6 +98,7 @@ body {
     padding: 2px 0;
     margin-right: 26px;
     color: #0a8cd2;
+    cursor: pointer;
 }
 
 .image_tool_item > div {
