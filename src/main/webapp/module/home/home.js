@@ -11,7 +11,13 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
             key: 'id',
             itemClazz: '',
             itemDataToHtml: function(itemData) {
+                var linkUrl = itemData.linkUrl;
+                var index = linkUrl.indexOf('?');
+                if(index > 0) {
+                    linkUrl = linkUrl.substring(0, index) + '?from=www.bicdoebang.com';
+                }
                 var result = '<div class="image_title">' + itemData.title + '</div>'
+                        + '<a href="' + linkUrl + '" target="_blank" class="image_from">来源</a>'
                         + '<div class="image_wrap"><img alt="" src="' + itemData.mPicurl + '" /></div>'
                         + '<div class="image_tools skip">'
 //                        + '<div class="image_tool_item button"><div>踩</div><div class="label">(' + itemData.voteDown + ')</div></div>'

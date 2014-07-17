@@ -6,11 +6,8 @@ html, body, div, input, textarea, img {
 }
 
 a {
-    text-decoration: none;
-}
-
-a:hover {
     color: #0a8cd2;
+    text-decoration: none;
 }
 
 img {
@@ -74,12 +71,19 @@ body {
     background-color: white;
     margin-bottom: 15px;
     border-radius: 5px;
+    position: relative;
 }
 
 .image_title {
     color: #777;
-    padding: 15px 20px 0 60px;
+    padding: 15px 20px 0 30px;
     font-size: 20px;
+}
+
+.image_from {
+    position: absolute;
+    top: 19px;
+    right: 30px;
 }
 
 .image_wrap {
