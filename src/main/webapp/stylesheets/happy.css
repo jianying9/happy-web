@@ -19,7 +19,7 @@ body {
     font: 14px/1.5 "Arial","Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeiti","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
     position: relative;
     min-width: 1040px;
-    background-color: #f0f0f0;
+    background: #d0d0d0 url("images/bg_grid.png") repeat;
     color: #333;
 }
 
