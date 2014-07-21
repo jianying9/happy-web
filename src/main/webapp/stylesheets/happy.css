@@ -67,6 +67,10 @@ body {
     float: right;
 }
 
+.image_list.has_login > .list_item .button {
+    display: block;
+} 
+
 .image_list > .list_item {
     background-color: white;
     margin-bottom: 15px;
