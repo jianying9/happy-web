@@ -126,10 +126,17 @@ body {
 }
 
 .box {
-    padding: 15px 20px;
     border-radius: 5px;
     background-color: white;
     margin-bottom: 15px;
+}
+
+.box iframe {
+    border-radius: 5px;
+}
+
+.box_inner {
+    padding: 15px 20px;
 }
 
 .login_btn {

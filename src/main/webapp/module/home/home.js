@@ -108,6 +108,17 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
         });
         //加载图片
         _message.send({act: 'INQUIRE_IMAGE_PAGE', pageIndex: 1, pageSize: 10});
+        //渲染广告
+        var tanx_s = document.createElement("script");
+        tanx_s.type = "text/javascript";
+        tanx_s.charset = "gbk";
+        tanx_s.id = "tanx-s-mm_57496364_7184442_23826501";
+        tanx_s.async = true;
+        tanx_s.src = "http://p.tanx.com/ex?i=mm_57496364_7184442_23826501";
+        var tanx_h = document.getElementsByTagName("head")[0];
+        if (tanx_h) {
+            tanx_h.insertBefore(tanx_s, tanx_h.firstChild);
+        }
     };
     return self;
 });
