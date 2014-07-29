@@ -52,13 +52,12 @@ body {
 .content {
     overflow: hidden;
     width: 1040px;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
     position: relative;
 }
 
 .content_main {
-    width: 725px;
-    min-height: 800px;
+    width: 735px;
     float: left;
 }
 
@@ -67,13 +66,22 @@ body {
     float: right;
 }
 
+.image_list {
+    height: 750px;
+    padding-right: 15px;
+}
+
+.image_list.list > .scroll {
+    display: block;
+}
+
 .image_list.has_login > .list_item .button {
     display: block;
 } 
 
 .image_list > .list_item {
     background-color: white;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-radius: 5px;
     position: relative;
 }
@@ -92,7 +100,6 @@ body {
 
 .image_wrap {
     margin: 15px auto 0;
-    width: 430px;
 }
 
 .image_tools {
@@ -190,7 +197,7 @@ body {
 .footer {
     overflow: hidden;
     width: 1040px;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
     position: relative;
     background-color: white;
 }
