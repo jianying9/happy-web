@@ -174,9 +174,17 @@ body {
     background: url("./images/androidqrcode.png") 0 0 no-repeat;
 }
 
-.android_download {
-    color: #1f90de;
-    margin-left: 40px;
+.mobile_download_button {
+    margin: 0 auto;
+    width: 215px;
+    height: 56px;
+    background: url("./images/download.png") 0 0 no-repeat;
+    display: block;
+}
+
+.mobile_download_title {
+    text-align: center;
+    color: #8d8d8d;
 }
 
 .footer {
