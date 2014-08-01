@@ -27,6 +27,11 @@ body {
     background: #1f90de;
     height: 45px;
     overflow: hidden;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
 }
 
 .header {
@@ -49,25 +54,30 @@ body {
     padding: 10px 10px;
 }
 
+.content_warp {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+}
+
 .content {
-    overflow: hidden;
+    margin: 0 auto;
     width: 1040px;
-    margin: 10px auto 0;
-    position: relative;
 }
 
 .content_main {
     width: 735px;
-    float: left;
+    margin-right: 305px;
 }
 
 .content_right {
     width: 300px;
-    float: right;
+    position: fixed;
+    top: 55px;
+    margin-left: 740px;
 }
 
 .image_list {
-    height: 750px;
     padding-right: 15px;
 }
 
@@ -135,7 +145,7 @@ body {
 .box {
     border-radius: 5px;
     background-color: white;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .box iframe {

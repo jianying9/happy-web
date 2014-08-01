@@ -2,14 +2,11 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
     var _yy = require('yy/yy');
     var self = {};
     var _event = _yy.getEvent();
+    var _components = _yy.getComponents();
     var _message = _yy.getMessage();
     self.init = function(thisModule) {
-        //计算image-list的高度
-        var bodyHeight = _yy.getConfig('bodyHeight');
-        var imageListHeight = bodyHeight - 95;
         //初始化图片列表
         var imageList = thisModule.findByKey('image-list');
-        imageList.$this.css({height: imageListHeight + 'px'});
         _message.listen(imageList, 'ADD_FAVORITE_IMAGE', function(thisCom, msg) {
             if (msg.state === 'SUCCESS') {
                 var imageId = msg.data.imageId;
@@ -26,7 +23,7 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                 //计算显示的宽和高
                 var displayWidth;
                 var displayHeight;
-                if(itemData.width <= 430) {
+                if (itemData.width <= 430) {
                     displayWidth = itemData.width;
                     displayHeight = itemData.height;
                 } else {
@@ -59,15 +56,6 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                         act: 'ADD_FAVORITE_IMAGE',
                         imageId: data.id
                     });
-                });
-            },
-            scrollBottomEventHandler: function(listCom) {
-                var pageIndex = listCom.getPageIndex() + 1;
-                var pageSize = listCom.getPageSize();
-                _message.send({
-                    act: 'INQUIRE_IMAGE_PAGE',
-                    pageIndex: pageIndex,
-                    pageSize: pageSize
                 });
             }
         });
@@ -103,8 +91,23 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                 }
             });
         });
-        //加载图片
-        _message.send({act: 'INQUIRE_IMAGE_PAGE', pageIndex: 1, pageSize: 10});
+        //鼠标滚动事件
+        var root = _components.getRoot();
+        root.$this.mousewheel(function(event, delta, deltaX, deltaY) {
+            var scrollHeight = root.$this[0].scrollHeight;
+            var scrollTop = root.$this[0].scrollTop;
+            var pencent = scrollTop / scrollHeight * 100;
+            if (pencent >= 90) {
+                //滚动到底部
+                var pageIndex = imageList.getPageIndex() + 1;
+                var pageSize = imageList.getPageSize();
+                _message.send({
+                    act: 'INQUIRE_IMAGE_PAGE',
+                    pageIndex: pageIndex,
+                    pageSize: pageSize
+                });
+            }
+        });
         //渲染广告
         var tanx_s = document.createElement("script");
         tanx_s.type = "text/javascript";
@@ -116,6 +119,8 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
         if (tanx_h) {
             tanx_h.insertBefore(tanx_s, tanx_h.firstChild);
         }
+        //加载图片
+        _message.send({act: 'INQUIRE_IMAGE_PAGE', pageIndex: 1, pageSize: 10});
     };
     return self;
 });
