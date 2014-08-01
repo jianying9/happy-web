@@ -10,7 +10,6 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
         //初始化图片列表
         var imageList = thisModule.findByKey('image-list');
         imageList.$this.css({height: imageListHeight + 'px'});
-//        var moreButton = thisModule.findByKey('more-button');
         _message.listen(imageList, 'ADD_FAVORITE_IMAGE', function(thisCom, msg) {
             if (msg.state === 'SUCCESS') {
                 var imageId = msg.data.imageId;
@@ -24,13 +23,6 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
             key: 'id',
             itemClazz: '',
             itemDataToHtml: function(itemData) {
-//                var linkUrl = itemData.linkUrl;
-//                var index = linkUrl.indexOf('?');
-//                if (index > 0) {
-//                    linkUrl = linkUrl.substring(0, index) + '?from=www.bicdoebang.com';
-//                } else {
-//                    linkUrl = linkUrl + '?from=www.bicdoebang.com';
-//                }
                 //计算显示的宽和高
                 var displayWidth;
                 var displayHeight;
@@ -42,11 +34,8 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                     displayHeight = parseInt(itemData.height * displayWidth / itemData.width);
                 }
                 var result = '<div class="image_title">' + itemData.title + '</div>'
-//                        + '<a href="' + linkUrl + '" target="_blank" class="image_from">来源</a>'
                         + '<img class="image_wrap" style="width:' + displayWidth + 'px;height:' + displayHeight + 'px" alt="" src="' + itemData.picurl + '" />'
                         + '<div class="image_tools skip">'
-//                        + '<div class="image_tool_item button"><div>踩</div><div class="label">(' + itemData.voteDown + ')</div></div>'
-//                        + '<div class="image_tool_item button"><div>顶</div><div class="label">(' + itemData.voteUp + ')</div></div>'
                         + '<div id="' + itemData.id + '-sina-publish" class="image_tool_item sina_publish button"></div>'
                         + '<div class="image_tool_item_title">分享到:</div>'
                         + '<div id="' + itemData.id + '-add-favorite" class="image_tool_item_title button hide">收藏</div>'
@@ -87,11 +76,6 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                 imageList.loadData(msg.data.list);
                 imageList.setPageIndex(msg.data.pageIndex);
                 imageList.setPageSize(msg.data.pageSize);
-//                if (msg.data.length === 0) {
-//                    moreButton.hide();
-//                } else {
-//                    moreButton.show();
-//                }
             }
         });
         _message.listen(imageList, 'SINA_USER_LOGIN', function(thisCom, msg) {
@@ -102,16 +86,6 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                 imageList.$this.addClass('has_login');
             }
         });
-        //初始化更多按钮
-//        _event.bind(moreButton, 'click', function(thisCom) {
-//            var pageIndex = imageList.getPageIndex() + 1;
-//            var pageSize = imageList.getPageSize();
-//            _message.send({
-//                act: 'INQUIRE_IMAGE_PAGE',
-//                pageIndex: pageIndex,
-//                pageSize: pageSize
-//            });
-//        });
         //初始化微博登陆按钮
         WB2.anyWhere(function(W) {
             W.widget.connectButton({
