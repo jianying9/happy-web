@@ -55,30 +55,30 @@ body {
 }
 
 .content_warp {
-    position: absolute;
+/*    position: absolute;
     top: 55px;
-    width: 100%;
+    width: 100%;*/
+    margin-top: 55px;
 }
 
 .content {
     margin: 0 auto;
     width: 1040px;
+    overflow: hidden;
 }
 
 .content_main {
     width: 735px;
-    margin-right: 305px;
+    float: left;
 }
 
 .content_right {
     width: 300px;
-    position: fixed;
-    top: 55px;
-    margin-left: 740px;
+    float: right;
 }
 
-.image_list {
-    padding-right: 15px;
+.image_list.list {
+    padding-right: 10px;
 }
 
 .image_list.list > .scroll {
@@ -93,7 +93,7 @@ body {
     background-color: white;
     margin-bottom: 10px;
     border-radius: 5px;
-    position: relative;
+    /*position: relative;*/
 }
 
 .image_title {
@@ -181,7 +181,6 @@ body {
     margin: 10px 0 0 0;
     border-top: 2px solid #ddd;
     padding: 5px;
-    color: #1f90de;
 }
 
 .android_qrcode {
@@ -204,16 +203,7 @@ body {
     color: #8d8d8d;
 }
 
-.footer {
-    overflow: hidden;
-    width: 1040px;
-    margin: 10px auto 0;
-    position: relative;
-    background-color: white;
-}
-
-.footer_txt {
+.info_text {
     padding: 3px 20px;
     font-size: 12px;
-    float: left;
 }

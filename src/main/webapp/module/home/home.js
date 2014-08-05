@@ -94,10 +94,11 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
         //鼠标滚动事件
         var root = _components.getRoot();
         root.$this.mousewheel(function(event, delta, deltaX, deltaY) {
-            var scrollHeight = root.$this[0].scrollHeight;
-            var scrollTop = root.$this[0].scrollTop;
-            var pencent = scrollTop / scrollHeight * 100;
-            if (pencent >= 90) {
+            var scrollHeight = document.body.scrollHeight;
+            var scrollTop = document.body.scrollTop + document.documentElement.scrollTop;
+            var clientHeight = document.body.clientHeight;
+            var pencent = (scrollTop + clientHeight) / scrollHeight * 100;
+            if (pencent >= 85) {
                 //滚动到底部
                 var pageIndex = imageList.getPageIndex() + 1;
                 var pageSize = imageList.getPageSize();
