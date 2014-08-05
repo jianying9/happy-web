@@ -23,11 +23,11 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                 //计算显示的宽和高
                 var displayWidth;
                 var displayHeight;
-                if (itemData.mWidth <= 430) {
+                if (itemData.mWidth <= 440) {
                     displayWidth = itemData.mWidth;
                     displayHeight = itemData.mHeight;
                 } else {
-                    displayWidth = 430;
+                    displayWidth = 440;
                     displayHeight = parseInt(itemData.mHeight * displayWidth / itemData.width);
                 }
                 var result = '<div class="image_title">' + itemData.title + '</div>'
