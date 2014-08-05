@@ -23,15 +23,15 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                 //计算显示的宽和高
                 var displayWidth;
                 var displayHeight;
-                if (itemData.width <= 430) {
-                    displayWidth = itemData.width;
-                    displayHeight = itemData.height;
+                if (itemData.mWidth <= 430) {
+                    displayWidth = itemData.mWidth;
+                    displayHeight = itemData.mHeight;
                 } else {
                     displayWidth = 430;
-                    displayHeight = parseInt(itemData.height * displayWidth / itemData.width);
+                    displayHeight = parseInt(itemData.mHeight * displayWidth / itemData.width);
                 }
                 var result = '<div class="image_title">' + itemData.title + '</div>'
-                        + '<img class="image_wrap" style="width:' + displayWidth + 'px;height:' + displayHeight + 'px" alt="" src="' + itemData.picurl + '" />'
+                        + '<img class="image_wrap" style="width:' + displayWidth + 'px;height:' + displayHeight + 'px" src="' + itemData.mUrl + '" />'
                         + '<div class="image_tools skip">'
                         + '<div id="' + itemData.id + '-sina-publish" class="image_tool_item sina_publish button"></div>'
                         + '<div class="image_tool_item_title">分享到:</div>'
@@ -59,11 +59,27 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                 });
             }
         });
+        var hasNext = true;
+        var canLoadNext = true;
         _message.listen(imageList, 'INQUIRE_IMAGE_PAGE', function(thisCom, msg) {
             if (msg.state === 'SUCCESS') {
-                imageList.loadData(msg.data.list);
-                imageList.setPageIndex(msg.data.pageIndex);
-                imageList.setPageSize(msg.data.pageSize);
+                var list = msg.data.list;
+                if (list.length > 0) {
+                    var urlId;
+                    var data;
+                    for (var index = 0; index < list.length; index++) {
+                        urlId = index % 4 + 1;
+                        data = list[index];
+                        data.lUrl = 'http://ww' + urlId + '.sinaimg.cn/large/' + data.fileName;
+                        data.mUrl = 'http://ww' + urlId + '.sinaimg.cn/bmiddle/' + data.fileName;
+                    }
+                    imageList.loadData(list);
+                    imageList.setPageIndex(msg.data.pageIndex);
+                    imageList.setPageSize(msg.data.pageSize);
+                    canLoadNext = true;
+                } else {
+                    hasNext = false;
+                }
             }
         });
         _message.listen(imageList, 'SINA_USER_LOGIN', function(thisCom, msg) {
@@ -98,15 +114,18 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
             var scrollTop = document.body.scrollTop + document.documentElement.scrollTop;
             var clientHeight = document.body.clientHeight;
             var pencent = (scrollTop + clientHeight) / scrollHeight * 100;
-            if (pencent >= 85) {
-                //滚动到底部
-                var pageIndex = imageList.getPageIndex() + 1;
-                var pageSize = imageList.getPageSize();
-                _message.send({
-                    act: 'INQUIRE_IMAGE_PAGE',
-                    pageIndex: pageIndex,
-                    pageSize: pageSize
-                });
+            if (pencent >= 75) {
+                //滚动接近底部
+                if (hasNext && canLoadNext) {
+                    canLoadNext = false;
+                    var pageIndex = imageList.getPageIndex() + 1;
+                    var pageSize = imageList.getPageSize();
+                    _message.send({
+                        act: 'INQUIRE_IMAGE_PAGE',
+                        pageIndex: pageIndex,
+                        pageSize: pageSize
+                    });
+                }
             }
         });
         //渲染广告
