@@ -40,7 +40,7 @@ body {
     margin: 0 auto;
 }
 
-.header > .header_title, .header > .header_content {
+.header > .header_title, .header > .header_content, .header > .split_line, .header > .nav_panel {
     float: left;
 }
 
@@ -54,10 +54,20 @@ body {
     padding: 10px 10px;
 }
 
+.split_line {
+    margin: 5px 10px;
+    width: 1px;
+    border-right: 1px solid #4C6AB6;
+    height: 35px;
+    background-color: #2E9DDB;
+}
+
+.nav_panel .button {
+    float: left;
+    font-size: 17px;
+    padding: 10px 10px;
+}
 .content_warp {
-/*    position: absolute;
-    top: 55px;
-    width: 100%;*/
     margin-top: 55px;
 }
 
