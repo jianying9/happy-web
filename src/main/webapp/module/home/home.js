@@ -1,10 +1,17 @@
-define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(require) {
+define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'yy/panel', 'weibo'], function(require) {
     var _yy = require('yy/yy');
     var self = {};
     var _event = _yy.getEvent();
     var _components = _yy.getComponents();
     var _message = _yy.getMessage();
     self.init = function(thisModule) {
+        //获取导航
+        var navList = thisModule.findByKey('nav-list');
+        for (var id in navList.children) {
+            _event.bind(navList.children[id], 'click', function(thisCom) {
+                thisCom.selected();
+            });
+        }
         //初始化图片列表
         var imageList = thisModule.findByKey('image-list');
         _message.listen(imageList, 'ADD_FAVORITE_IMAGE', function(thisCom, msg) {
@@ -45,7 +52,7 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                 var sinalPublishId = data.id + '-sina-publish';
                 var sinaPublishButton = itemCom.findChildByKey(sinalPublishId);
                 _event.bind(sinaPublishButton, 'click', function(thisCom) {
-                    window.open('http://service.weibo.com/share/share.php?title=' + encodeURIComponent(data.title) + '&url=' + encodeURIComponent("http://www.bigcodebang.com") + '&pic=' + encodeURIComponent(data.picurl) + '&appkey=238808965&searchPic=false', '_blank', "crollbars=no,width=600,height=450,left=75,top=20,status=no,resizable=no,location=no");
+                    window.open('http://service.weibo.com/share/share.php?title=' + encodeURIComponent(data.title) + '&url=' + encodeURIComponent("http://www.bigcodebang.com") + '&pic=' + encodeURIComponent(data.lUrl) + '&appkey=238808965&searchPic=false', '_blank', "crollbars=no,width=600,height=450,left=75,top=20,status=no,resizable=no,location=no");
                 });
                 //收藏按钮
                 var addFavoriteId = data.id + '-add-favorite';
@@ -86,6 +93,7 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
             if (msg.state === 'SUCCESS') {
                 _yy.setSession(msg.data);
                 //显示登录后的导航
+                navList.$this.addClass('login');
                 //图片列表显示收藏按钮
                 imageList.$this.addClass('has_login');
             }
@@ -103,6 +111,8 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'weibo'], function(r
                         });
                     },
                     logout: function() {
+                        //显示登录后的导航
+                        navList.$this.removeClass('login');
                     }
                 }
             });

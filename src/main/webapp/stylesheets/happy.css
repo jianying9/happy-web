@@ -62,11 +62,30 @@ body {
     background-color: #2E9DDB;
 }
 
-.nav_panel .button {
+.nav_list .list_item {
     float: left;
     font-size: 17px;
     padding: 10px 10px;
+    cursor: pointer;
+    margin-left: 2px;
 }
+
+.nav_list .list_item:hover {
+    background-color: #1484D3;
+}
+
+.nav_list .list_item.selected {
+    background-color: #1484D3;
+}
+
+.login > .login_nav {
+    display: block;
+}
+
+.login_nav {
+    display: none;
+}
+
 .content_warp {
     margin-top: 55px;
 }
