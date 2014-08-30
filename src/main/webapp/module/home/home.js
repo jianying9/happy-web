@@ -22,15 +22,6 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'yy/panel', 'weibo']
         }
         //初始化图片列表
         var imageList = thisModule.findByKey('image-list');
-        _message.listen(imageList, 'ADD_FAVORITE_IMAGE', function(thisCom, msg) {
-            if (msg.state === 'SUCCESS') {
-                var imageId = msg.data.imageId;
-                var imageItem = imageList.getItemByKey(imageId);
-                var addFavoriteId = msg.data.imageId + '-add-favorite';
-                var addFavoriteButton = imageItem.findChildByKey(addFavoriteId);
-                addFavoriteButton.setLabel('已收藏');
-            }
-        });
         imageList.init({
             key: 'id',
             itemClazz: '',
@@ -142,9 +133,9 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'yy/panel', 'weibo']
                     window.open('http://service.weibo.com/share/share.php?title=' + encodeURIComponent(data.title) + '&url=' + encodeURIComponent("http://www.bigcodebang.com") + '&pic=' + encodeURIComponent(data.lUrl) + '&appkey=238808965&searchPic=false', '_blank', "crollbars=no,width=600,height=450,left=75,top=20,status=no,resizable=no,location=no");
                 });
                 //删除按钮
-                var addFavoriteId = data.id + '-delete-favorite';
-                var addFavoriteButton = itemCom.findChildByKey(addFavoriteId);
-                _event.bind(addFavoriteButton, 'click', function(thisCom) {
+                var deleteFavoriteId = data.id + '-delete-favorite';
+                var deleteFavoriteButton = itemCom.findChildByKey(deleteFavoriteId);
+                _event.bind(deleteFavoriteButton, 'click', function(thisCom) {
                     var data = thisCom.parent.getData();
                     _message.send({
                         act: 'DELETE_FAVORITE_IMAGE',
@@ -175,6 +166,19 @@ define('home', ['require', 'yy/yy', 'yy/button', 'yy/list', 'yy/panel', 'weibo']
                 } else {
                     favoriteListHasNext = false;
                 }
+            }
+        });
+        //增加收藏
+        _message.listen(imageList, 'ADD_FAVORITE_IMAGE', function(thisCom, msg) {
+            if (msg.state === 'SUCCESS') {
+                var imageId = msg.data.imageId;
+                var imageItem = imageList.getItemByKey(imageId);
+                var addFavoriteId = msg.data.imageId + '-add-favorite';
+                var addFavoriteButton = imageItem.findChildByKey(addFavoriteId);
+                addFavoriteButton.setLabel('已收藏');
+                //
+                var data = imageItem.getData();
+                favoriteList.addItemDataFirst(data);
             }
         });
         //初始化微博登陆按钮
