@@ -5,17 +5,32 @@
             <div class="header_content">爱生活，爱探索</div>
             <div class="split_line"></div>
             <div id="nav-list" class="nav_list list">
-                <div class="list_item selected">首页</div>
-                <div class="login_nav list_item">我的收藏</div>
-                <div class="login_nav list_item">我的积分</div>
-                <div class="list_item">留言</div>
+                <div id="image-list-item-panel" class="list_item selected">首页</div>
+                <div id="favorite-list-item-panel" class="login_nav list_item">我的收藏</div>
+                <div id="point-list-item-panel" class="login_nav list_item">我的积分</div>
+                <div id="note-list-item-panel" class="list_item">留言</div>
             </div>
         </div>
     </div>
     <div class="content_warp skip">
         <div class="content skip">
             <div class="content_main skip">
-                <div id="image-list" class="image_list list"></div>
+                <div id="panel-list" class="list panel_list">
+                    <!--首页图片-->
+                    <div id="image-list-item" class="list_item selected">
+                        <div id="image-list" class="image_list list"></div>
+                    </div>
+                    <!--我的收藏-->
+                    <div id="favorite-list-item" class="list_item">
+                        <div id="favorite-list" class="image_list list"></div>
+                    </div>
+                    <!--我的积分-->
+                    <div id="point-list-item" class="list_item">
+                    </div>
+                    <!--留言-->
+                    <div id="note-list-item" class="list_item">
+                    </div>
+                </div>
             </div>
             <div class="content_right skip">
                 <div class="box box_inner skip">

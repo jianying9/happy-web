@@ -106,6 +106,14 @@ body {
     float: right;
 }
 
+.panel_list > .list_item {
+    display: none;
+}
+
+.panel_list > .list_item.selected {
+    display: block;
+}
+
 .image_list.list {
     padding-right: 10px;
 }
